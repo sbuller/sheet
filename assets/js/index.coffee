@@ -1,6 +1,6 @@
+#= require input
+
 $ ->
-	$('#input>input').keypress (e)->
-		if e.which == 13
-			el = $(@)
-			$('#log').append $('<div class="entry">').html el.val()
-			el.val('')
+	inputWidget = new Input('#input')
+	inputWidget.on 'command', (command) ->
+		console.log command
