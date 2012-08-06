@@ -6,7 +6,6 @@ class window.Input extends EventEmitter
 			el = $(el)
 
 		self = @
-		log_el = $('#log')
 
 		input_el = $('<input type="text">')
 		input_el.css
@@ -16,7 +15,6 @@ class window.Input extends EventEmitter
 		input_el.keypress (ev) ->
 			if ev.which == 13
 				el = $(@)
-				log_el.append $('<div class="entry">').html el.val()
 				self.emit 'command', el.val()
 				el.val('')
 		input_el.change (ev) =>

@@ -1,6 +1,9 @@
 #= require input
+#= require log
 
 $ ->
-	inputWidget = new Input('#input')
+	inputWidget = new Input '#input'
+	logWidget = new Log '#log'
+
 	inputWidget.on 'command', (command) ->
-		console.log command
+		logWidget.log command
