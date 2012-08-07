@@ -9,6 +9,9 @@ class window.Input extends EventEmitter
 		@input_el = $('<input type="text">')
 		@input_el.css
 				width: "100%"
+				height: "28px"
+				"box-sizing": "border-box"
+				"-moz-box-sizing": "border-box"
 				border: "1px solid #999"
 				font: "130% monospace"
 		@input_el.keypress (ev) ->
