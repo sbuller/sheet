@@ -11,6 +11,12 @@ class window.Log
 			background: "#CCF"
 
 	log: (message) ->
-		entry_el = $('<div class="entry">')
-		entry_el.text message
-		@el.append entry_el
+		if notEmpty(message)
+			entry_el = $('<div class="entry">')
+			entry_el.text message
+			@el.append entry_el
+
+notEmpty = (message) ->
+	for char in message.split("")
+		return true if char isnt " "
+	return false
