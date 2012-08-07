@@ -17,6 +17,4 @@ class window.Log
 			@el.append entry_el
 
 notEmpty = (message) ->
-	for char in message.split("")
-		return true if char isnt " "
-	return false
+	!!message.match /\S/
