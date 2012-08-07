@@ -6,17 +6,18 @@ class window.Input extends EventEmitter
 			el = $(el)
 		self = @
 
-		input_el = $('<input type="text">')
-		input_el.css
+		@input_el = $('<input type="text">')
+		@input_el.css
 				width: "100%"
 				border: "1px solid #999"
 				font: "130% monospace"
-		input_el.keypress (ev) ->
+		@input_el.keypress (ev) ->
 			if ev.which == 13
 				el = $(@)
 				self.emit 'command', el.val()
 				el.val('')
-		input_el.change (ev) =>
+		@input_el.change (ev) =>
 			@emit 'change', ev
 
-		el.append input_el
+		el.append @input_el
+		@input_el.focus()
