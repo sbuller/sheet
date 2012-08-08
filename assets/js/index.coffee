@@ -1,6 +1,7 @@
 #= require input
 #= require log
 #= require processor
+#= require commands
 
 $ ->
 	processor = new Processor
@@ -9,6 +10,8 @@ $ ->
 
 	inputWidget.on 'command', (command) ->
 		processor.process command
+
+	importCommands processor
 
 	$('html').live 'keypress', (e) ->
 		el = inputWidget.input_el
