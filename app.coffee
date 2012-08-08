@@ -3,6 +3,7 @@ routes = require './routes'
 http = require 'http'
 path = require 'path'
 bootstrap = require 'bootstrap-stylus'
+negotiate = require 'express-negotiate'
 
 app = express()
 
@@ -22,6 +23,7 @@ app.configure 'development', ->
 
 app.get '/', routes.index
 app.get '/:log', routes.log
+app.put '/:log', routes.put_log
 
 http.createServer(app).listen app.get('port'), ->
   console.log "Express server listening on port " + app.get('port')
