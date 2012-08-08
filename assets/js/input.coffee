@@ -14,11 +14,10 @@ class window.Input extends EventEmitter
 				"-moz-box-sizing": "border-box"
 				border: "1px solid #999"
 				font: "130% monospace"
-		@input_el.keypress (ev) ->
+		@input_el.keypress (ev) =>
 			if ev.which == 13
-				el = $(@)
-				self.emit 'command', el.val()
-				el.val('')
+				self.emit 'command', @input_el.val()
+				@input_el.val('')
 		@input_el.change (ev) =>
 			@emit 'change', ev
 
