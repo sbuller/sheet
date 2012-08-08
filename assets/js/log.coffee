@@ -16,4 +16,3 @@ class window.Log
 		entry_el = $('<div class="entry">')
 		entry_el.text message
 		@el.append entry_el
-
