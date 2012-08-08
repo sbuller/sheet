@@ -1,12 +1,14 @@
 #= require input
 #= require log
+#= require processor
 
 $ ->
+	processor = new Processor
 	inputWidget = new Input '#input'
-	logWidget = new Log '#log'
+	logWidget = new Log '#log', processor
 
 	inputWidget.on 'command', (command) ->
-		logWidget.log command
+		processor.process command
 
 	$('html').live 'keypress', (e) ->
 		el = inputWidget.input_el

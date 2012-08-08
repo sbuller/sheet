@@ -1,5 +1,5 @@
 class window.Log
-	constructor: (el) ->
+	constructor: (el, processor) ->
 		if not el.jquery
 			el = $(el)
 		@el = el
@@ -10,11 +10,10 @@ class window.Log
 			color: "#808080"
 			background: "#CCF"
 
-	log: (message) ->
-		if notEmpty(message)
-			entry_el = $('<div class="entry">')
-			entry_el.text message
-			@el.append entry_el
+		processor.on 'log', (message) => @log message
 
-notEmpty = (message) ->
-	!!message.match /\S/
+	log: (message) ->
+		entry_el = $('<div class="entry">')
+		entry_el.text message
+		@el.append entry_el
+
