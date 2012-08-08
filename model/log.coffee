@@ -6,7 +6,11 @@ class Log
 			@store = store
 
 	get: (id, cb) ->
-		@store.get id, cb
+		@store.get id, (err, data) ->
+			if data
+				cb err, data.data
+			else
+				cb err, data
 
 	set: (id, obj, cb) ->
 		cb ?= -> undefined

@@ -9,9 +9,10 @@ exports.index = (req, res) ->
 
 exports.log = (req, res) ->
 	log.get req.params.log, (err, data) ->
+		if err then data = {}
 		req.negotiate
 			'text/html,default': ->
-				res.render 'log', {title: 'Log Sheet', data: data}
+				res.render 'log', {title: 'Log Sheet', data: JSON.stringify data}
 			'application/json': ->
 				res.send data
 
